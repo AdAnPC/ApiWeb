@@ -12,6 +12,9 @@ class pageControlador extends orm {
       //  require_once('../vista/styles.css');
     }
 
+    public function pe(){
+      
+    }
    //funcion para mostrar la api en la url 
     public function ApI(){
         echo 'api ';
