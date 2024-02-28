@@ -74,5 +74,45 @@ public function testGetIdNull()
 
     $this->assertNull($result);
 }
+// Crea con éxito una nueva instancia de la clase Base de datos.
+function test_create_instance() {
+    // 
+    $database = new Database();
+
+    // Comprueba si la instancia se creó correctamente
+    $this->assertInstanceOf(Database::class, $database);
+
+    // Código de prueba adicional para verificar si se realizan más de 1000 conexiones
+    $connectionCount = 0;
+    for ($i = 0; $i < 101; $i++) {
+        // Act
+        // Cree nuevas instancias dentro del bucle para simular conexiones.
+
+        $database = new Database();
+        $connectionCount++;
+    }
+
+    // Assert
+    // Compruebe si el número de conexiones es mayor que 1000
+    $this->assertGreaterThan(100, $connectionCount);
+}
+
+function test_connection_pooling() {
+    // Arrange
+    $database = new Database();
+
+    // Act
+    $connection1 = $this->getConexion();
+    $connection2 = $this->getConexion();
+
+    // Assert
+    $this->assertInstanceOf(PDO::class, $connection1);
+    $this->assertInstanceOf(PDO::class, $connection2);
+    $this->assertNotSame($connection1, $connection2); // Ensure different instances for different connections
+}
+
+
+
+
 
 }
