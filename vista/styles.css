@@ -1,0 +1,87 @@
+/* Estilos base del botón */
+.btnApi {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #34db3f;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilos cuando el cursor está sobre el botón */
+.btnApi:hover {
+    background-color: #2980b9;
+    color: #fff; /* Cambiar el color del texto para que sea visible sobre el nuevo fondo */
+}
+
+
+
+body {
+    background-color: #111;
+    color: white;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+    background-color: #111;
+    color: white;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #333;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #000;
+    color: #ffc107;
+}
+
+img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 8px;
+}
+
+.btn-agregar {
+    background-color: #e50914;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-agregar:hover {
+    background-color: #b2070f;
+}
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+    th, td {
+        font-size: 14px;
+        padding: 10px;
+    }
+    
+    img {
+        max-width: 80px;
+    }
+}
+/* Estilos para el botón */
+
+
