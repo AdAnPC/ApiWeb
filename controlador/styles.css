@@ -1,0 +1,46 @@
+.btnApi {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: #34db3f;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Estilos cuando el cursor está sobre el botón */
+.btnApi:hover {
+    background-color: #2980b9;
+    color: #fff; /* Cambiar el color del texto para que sea visible sobre el nuevo fondo */
+}
+.btn-agregar {
+    background-color: #2a09e5;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-agregar:hover {
+    background-color: #d1e70f;
+}
+
+.btn-eliminar {
+    background-color: #e50914;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn-eliminar:hover {
+    background-color: #b2070f;
+}

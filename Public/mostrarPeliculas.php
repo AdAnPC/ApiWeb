@@ -29,9 +29,11 @@ echo "exitoso";
 
     <!-- Botón para conectar a la API -->
     <div class="btnContainer">
-        <a href="ConexionApi.php" class="btnApi">Conectar a la API</a>
+        <a href="../ConexionApi.php" class="btnApi">Conectar a la API</a>
     </div>
-
+    <div class="btnContainer">
+        <a href="../ConApi2.php" class="btnApi">Conectar a la API2</a>
+    </div>
     <!-- Botón para ir a la página de login -->
     <div class="btnContainer">
         <a href="../vista/login.php" class="btnApi">Login</a>
@@ -85,7 +87,7 @@ echo "exitoso";
                                     <td><?php echo $data['id_director']; ?></td>
                                     <!-- Enlace para mostrar detalles o realizar acciones -->
                                     <td>
-                                        <a class="btn btn-agregar"  href="../controlador/Crud.php">Mostrar</a>
+                                        <a class="btn btn-agregar"  href="../../controlador/Crud.php">Mostrar</a>
                                     </td>
                                 </tr>
                         <?php

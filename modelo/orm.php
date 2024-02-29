@@ -51,9 +51,10 @@ class orm
     // Método para eliminar un registro por su ID.
     public function deleteById($id)
     {
+        $id = $_GET['id'];
         try {
-            $stm = $this->db->prepare("DELETE * FROM {$this->table} WHERE id =:id");
-            $stm->bindValue(":id ", $id);
+            $stm = $this->db->prepare("DELETE  FROM {$this->table} WHERE id_pelicula =:id");
+            $stm->bindValue(":id", $id);
             $stm->execute();
         } catch (PDOException $e) {
             var_dump($e);
@@ -68,7 +69,7 @@ class orm
             $sql .= "{$key}= :{$key},";
         }
         $sql = trim($sql, ',');
-        $sql .= "WHERE  id = :id";
+        $sql .= "WHERE  id_pelicula = :id";
         try {
             $stm = $this->db->prepare($sql);
             foreach ($data as $key => $value) {

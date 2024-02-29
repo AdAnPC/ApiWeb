@@ -30,7 +30,7 @@ $result = $usuarioModelo->getAll();
 // Verifica si la conexión a la base de datos se realizó correctamente.
 if ($conexion) {
     $ultimo_id = 0;
-
+    $pe_id = '';
     // Itera sobre los resultados obtenidos de la base de datos.
     foreach ($result as $data) {
         // Obtiene el último ID de película de la tabla 'peliculass'.
@@ -45,16 +45,17 @@ if ($conexion) {
     $nuevo_id = $ultimo_id + 1;
 
     // Itera sobre las páginas de películas populares (solo 1 página en este caso).
-    for ($i = 1; $i <= 20; $i++) {
+   // for ($i = 1; $i <= 1; $i++) {
         // Obtiene la información de las películas populares desde la API de TMDb.
-        $url = "https://api.themoviedb.org/3/movie/popular?api_key=cc5c27f75d0cb30aed9d3db7ff4b06fb&language=es$i";
-        $response = file_get_contents($url);
+       
+    
+      $u= "https://api.themoviedb.org/3/movie/popular?api_key=cc5c27f75d0cb30aed9d3db7ff4b06fb&language=es";
 
-        // Decodifica la respuesta JSON.
-        $data = json_decode($response, true);
-
+        $ponse = file_get_contents($u);
+        
+        $ta = json_decode($ponse, true);
         // Itera sobre las películas obtenidas.
-        foreach ($data['results'] as $movie) {
+        foreach ($ta['results'] as $movie) {
             // Extrae la información de la película y la asigna a variables.
             $nombre = isset($movie['title']) ? $conexion->quote($movie['title']) : '';
             $fecha = isset($movie['release_date']) ? $conexion->quote($movie['release_date']) : '';
@@ -64,14 +65,25 @@ if ($conexion) {
             $imagen = isset($movie['poster_path']) ? $movie['poster_path'] : '';
 
             $lenguaje = isset($movie['original_language']) ? $conexion->quote($movie['original_language']) : '';
-            $id = isset($movie['id']) ? $conexion->quote($movie['id']) : '';
+            $id = isset($movie['id']) ? $movie['id'] : '';
 
+
+
+//            $url = "https://api.themoviedb.org/3/movie/{$id}/videos?api_key=cc5c27f75d0cb30aed9d3db7ff4b06fb";
+        //    $response = file_get_contents($url);
+            
+       //     $data = json_decode($response, true);
+            
+        //    foreach ($data['results'] as $mo) {
+        //        $pe_id = isset($mo['key']) ? $conexion->quote($mo['key']) : '';
+    
+    
             // Genera un número aleatorio para la cantidad 
             $cantidad = rand(1, 100);
 
             // Prepara la consulta SQL para insertar datos en la tabla 'peliculass'.
-            $query = "INSERT INTO peliculass(titulo, anio_estreno, sinopsis, id_director, duracion_minutos, thumbnail, id_genero) 
-                      VALUES (:nombre, :fecha, :sinopsis, :lenguaje, :duracion, :imagen, :id)";
+            $query = "INSERT INTO peliculass(titulo, anio_estreno, sinopsis, id_director, duracion_minutos, thumbnail, id_genero, video_id) 
+                      VALUES (:nombre, :fecha, :sinopsis, :lenguaje, :duracion, :imagen, :id, :pe_id)";
 
             // Prepara la sentencia SQL.
             $stmt = $conexion->prepare($query);
@@ -84,6 +96,7 @@ if ($conexion) {
             $stmt->bindParam(':duracion', $duracion);
             $stmt->bindParam(':imagen', $imagen);
             $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':pe_id', $pe_id);
 
             // Ejecuta la consulta y muestra mensajes de éxito o error.
             if ($stmt->execute()) {
@@ -91,8 +104,10 @@ if ($conexion) {
             } else {
                 echo "Error al insertar datos para la película: $nombre - " . $stmt->errorInfo()[2] . "<br>";
             }
+        
         }
-    }
+    
+
 } else {
     echo "No se encontraron datos en la API";
 }
