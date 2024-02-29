@@ -31,9 +31,7 @@ echo "exitoso";
     <div class="btnContainer">
         <a href="../ConexionApi.php" class="btnApi">Conectar a la API</a>
     </div>
-    <div class="btnContainer">
-        <a href="../ConApi2.php" class="btnApi">Conectar a la API2</a>
-    </div>
+    
     <!-- Botón para ir a la página de login -->
     <div class="btnContainer">
         <a href="../vista/login.php" class="btnApi">Login</a>

@@ -44,3 +44,40 @@
 .btn-eliminar:hover {
     background-color: #b2070f;
 }
+
+
+
+
+
+ body {
+            background-color: #141414;
+            color: #fff;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .table {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid #555;
+        }
+
+        .table-responsive {
+            border: 1px solid #555;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+       
+
+        iframe {
+            margin-top: 20px;
+            border: none;
+            border-radius: 8px;
+        }
